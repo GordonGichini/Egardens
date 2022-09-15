@@ -3,7 +3,7 @@ import Product from "./Product";
 export default class ShoppingCart extends Component{
 //Executes when the component is mounted
 constructor(props){
-    console.log("constructor-ShoppingCart")
+   // console.log("constructor-ShoppingCart")
     super(props);//calling super class' constructor
 
     //initialization of the state
@@ -47,7 +47,18 @@ constructor(props){
     //executes after constructor and render method (includes life cycle of child components, if any) of current component
     componentDidMount(){
         //fetch data from data source
-        console.log("componentDidMount-ShoppingCart")
+var promise=fetch("",{method:"GET"});
+promise.then((response)=>{
+    console.log(response);
+
+    var promise2=response.json();
+    promise2.then((prods)=>{
+        console.log(prods);
+
+        this.setState({prods:prods});
+    });
+});
+  // console.log("componentDidMount-ShoppingCart")
     }
 componentDidUpdate(prevProps,prevState){
     console.log(
