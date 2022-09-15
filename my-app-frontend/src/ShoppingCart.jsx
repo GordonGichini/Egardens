@@ -1,14 +1,15 @@
 import React,{Component} from "react";
+import Product from "./Product";
 export default class ShoppingCart extends Component{
 
     state={
         products:[
             {id:1,productName:"Iphone13",price:8900,quantity:0},
-            {id:1,productName:"Sony Camera",price:900,quantity:0},
-            {id:1,productName:"Samsung QLED TV",price:18700,quantity:0},
-            {id:1,productName:"Ipad Pro",price:750,quantity:0},
-            {id:1,productName:"Xbox",price:899,quantity:0},
-            {id:1,productName:"Mac MOnitor",price:890,quantity:0},
+            {id:2,productName:"Sony Camera",price:900,quantity:0},
+            {id:3,productName:"Samsung QLED TV",price:18700,quantity:0},
+            {id:4,productName:"Ipad Pro",price:750,quantity:0},
+            {id:5,productName:"Xbox",price:899,quantity:0},
+            {id:6,productName:"Mac MOnitor",price:890,quantity:0},
         ],
     };
 
@@ -24,6 +25,7 @@ export default class ShoppingCart extends Component{
                     product={prod}
                     onIncrement={this.handleIncrement}
                     onDecrement={this.handleDecrement}
+                    onDelete={this.handleDelete}
                     >
                     <button className="btn btn-primary">Buy Now</button></Product>;
                 })}
@@ -52,9 +54,25 @@ export default class ShoppingCart extends Component{
          let allProducts=[...this.state.products];
          let index=allProducts.indexOf(product);
          
-         if(allProducts[index].quantity>minValue)
+         if(allProducts[index].quantity>minValue){
          allProducts[index].quantity--;
  //update the state of the current component(parent component)
          this.setState({products:allProducts});
-     };
+     }
     };
+
+    //executes when the user clicks on Delete(x) button in the Product component.
+    handleDelete= (product)=> {
+        //get index of selected product
+        let allProducts=[...this.state.products];
+         let index=allProducts.indexOf(product);
+
+         if(window.confirm("Are you sure to delete?")){
+         //delete product based on index
+         allProducts.splice(index, 1);
+
+         //update the state of current component (parent component)
+         this.setState({products:allProducts});
+         }
+    };
+}

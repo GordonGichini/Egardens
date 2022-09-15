@@ -7,7 +7,6 @@ render(){
 return( <React.Fragment>
     <NavBar />
     <ShoppingCart />
-    <Product />
 </React.Fragment>
 );
 }

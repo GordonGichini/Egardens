@@ -21,8 +21,7 @@ class NavBar extends Component{
      </div>
   </div>
 </nav> 
-        <h1>Heeeyyy</h1>
-        <p className="hightlight"> I'm a React DEV</p>
+      
         </React.Fragment>
         );
     }
