@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 
 
-export default class MainContent extends Component{
+export default class CustomerList extends Component{
     state = {pageTitle: "Customers",
     customersCount: 5,
     customers:[
@@ -22,14 +22,14 @@ export default class MainContent extends Component{
     {
     id:3, 
     name:"Nodrog", 
-    phone:"323-356",
+    phone:"",
     address: {city: "London"},
     photo: "https://picsum.photos/id/1070/60",
     },
     {
      id:4,
      name:"Brian", 
-     phone:"123-459",
+     phone:"",
      address: {city: "Chicago"},
      photo: "https://picsum.photos/id/1019/60",
     },
@@ -91,14 +91,14 @@ getPhoneToRender = (phone) => {
     }
 };
                    getCustomerRow = () => { 
-                    return this.state.customers.map((cust, index) => {
-                        return ( 
+                    return this.state.customers.map((cust,index) => {
+                        return( 
                             <tr key={cust.id}>
                                 <td>{cust.id}</td>
                                 <td> 
                                     <img src={cust.photo} alt="Customer" /> 
                                     <div>
-                                    <button class="btn-btn-sm btn-secondary"onClick={() => { this.onChangePictureClick(cust,index);}}>Change Picture</button>
+                                    <button className="btn-btn-sm btn-secondary"onClick={() => {this.onChangePictureClick(cust,index);}}>Change Picture</button>
                                     </div>
                                     </td>
                                 <td >{cust.name}</td>
@@ -110,16 +110,16 @@ getPhoneToRender = (phone) => {
                     };
 ////Executes when the user clicks on "Change Picture" button in the grid
 //Receives the "customer" object and index of the currently clicked customer
-                onChangePictureClick= (cust, index) => {
-                    //console.log(cust)
-                   // console.log(index)
+                onChangePictureClick= (cust,index) => {
+                   // console.log(cust)
+                   //console.log(index)
 
                    //get existing customers
-                   var custArr = this.state.customers;
-                   custArr[index].photo = "https://picsum.photos/id/1077/60"
+                   var custArr =this.state.customers;
+                   custArr[index].photo = "https://picsum.photos/id/1077/60";
 
                    //update "customers" array in the state
-                   this.setState({customers: []});
+                   this.setState({customers:custArr});
                 };    
                 }
 
