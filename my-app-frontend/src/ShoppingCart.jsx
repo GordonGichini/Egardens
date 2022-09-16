@@ -45,29 +45,24 @@ constructor(props){
     // render ends here
 
     //executes after constructor and render method (includes life cycle of child components, if any) of current component
-    componentDidMount(){
+    componentDidMount = async() => {
         //fetch data from data source
-var promise=fetch("",{method:"GET"});
-promise.then((response)=>{
-    console.log(response);
+var response = await fetch("",{method: "GET",});
 
-    var promise2=response.json();
-    promise2.then((prods)=>{
-        console.log(prods);
+var prods=await response.json();
+console.log(prods);
 
-        this.setState({prods:prods});
-    });
-});
-  // console.log("componentDidMount-ShoppingCart")
-    }
+this.setState({products:prods});
+  // con;sole.log("componentDidMount-ShoppingCart")
+    };
 componentDidUpdate(prevProps,prevState){
-    console.log(
-        "componentDidUpdate-ShoppingCart",
+  /*console.log(
+      "componentDidUpdate-ShoppingCart",
         prevProps,
         prevState,
         this.props,
         this.state
-    );
+    );*/
   //  if(prevProps.x !=this.props.x){
         //make http call
    // }

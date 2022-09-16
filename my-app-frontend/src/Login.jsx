@@ -45,12 +45,16 @@ export default class Login extends Component{
     }// end of render
 
     //Executes when the user clicks on login
-    onLoginClick=() => {
+    onLoginClick= async() => {
         console.log(this.state);
-        if(
-            this.state.email==="admin@test.com"&&
-            this.state.password==="admin123"
-        ){
+
+        var response= await fetch(`=${this.state.email}&password=${this.state.password}`,
+       {method: "GET"} 
+        );
+
+        var body= await response.json()
+        if(body){
+    
             //success
             this.setState({
                 message:
