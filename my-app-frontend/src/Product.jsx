@@ -10,7 +10,7 @@ export default class Product extends Component {
 //console.log(this.props);
 
         return (
-            <div className="row">
+            
     <div className="col-lg-6">
         <div className="card m-2">
             <div className="card-body">
@@ -47,7 +47,6 @@ export default class Product extends Component {
              <div className="float-right">{this.props.children}</div>
         </div>
         {/*card-footer ends here */}
-        </div>
         </div>
         </div>
         );
